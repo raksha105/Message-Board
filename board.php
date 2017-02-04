@@ -9,14 +9,10 @@ if(!($_SESSION['login_check']))
 	header("location: login.php");
 die;
 	}
-	
-
 ?>
 <html>
 <head><title>Message Board</title></head>
 <body>
-
-
 <form method="POST" action="board.php" id="111">
 <textarea rows="4" cols="50" name="message" form ="111"> </textarea>
 <br></br>
@@ -27,7 +23,6 @@ die;
 <input type ="submit" value="logout" name="logout">
 
 <?php
-
 if(isset($_GET['logout']))
 {
 	unset($_SESSION['login_check']);
@@ -36,13 +31,12 @@ if(isset($_GET['logout']))
 ?>
 </form>
 
-
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors','On');
 
 //try {
-  //$message_dbh = new PDO("mysql:host=127.0.0.1:3306;dbname=board","root","",array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+  //$message_dbh = new PDO("mysql:host=127.0.0.1:3306;dbname="","root","",array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
 
 if(isset($_POST['submit_message']))
@@ -59,7 +53,7 @@ if(isset($_POST['submit_message']))
 if( strlen($_POST['message']) > 1)
 {
 
-	  $message_dbh = new PDO("mysql:host=127.0.0.1:3306;dbname=board","root","",array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	  $message_dbh = new PDO("mysql:host=127.0.0.1:3306;dbname=""","","",array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 $message_dbh->beginTransaction();
 
 	
@@ -75,12 +69,7 @@ else
 }
 
 }
-
-	
-
-		
-		
-		else if(isset($_GET['replyto']))
+	else if(isset($_GET['replyto']))
 	{
 		
 		$reply_message = htmlspecialchars($_POST['message']);
@@ -103,18 +92,9 @@ else{
 		echo "please enter a reply on the board";
 }
 		
-	}
-		
-	
-		
+	}	
 
 ?>
-
-
-
-
-
-
 <?php
 //echo "<p> $user </p>";
 ?>
@@ -155,9 +135,6 @@ try {
 	//echo "<td> <form id=\"222\" method=\"GET\" action=\"board.php\">";
 	echo "<td> <input type=\"submit\"name =\"rr\" form=\"111\" value=\"reply\" formaction=\"board.php?replyto=$SESSION[reply_id]\"></form></td>";
 	echo "</tr>";
-	
-	
-
   }
   
   
@@ -167,14 +144,10 @@ try {
   die();
 }
 
-
 ?>
-
 
 </tbody>
 </table>
-
-
 
 </body>
 </html>
