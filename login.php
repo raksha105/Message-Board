@@ -33,12 +33,9 @@ if(isset($_POST['login']))
 
 
 
-  $new_dbh = new PDO("mysql:host=127.0.0.1:3306;dbname=board","root","",array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+  $new_dbh = new PDO("mysql:host=127.0.0.1:3306;dbname=""","","",array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
 $new_dbh->beginTransaction();
-
-
-
 $stmt = $new_dbh->prepare("select * from users where username='".$_POST['username']."' AND password='".md5($_POST['pswd'])."'");
   $stmt->execute();
   print "<pre>";
@@ -59,8 +56,4 @@ else {
 }
 }
 ?>
-  
-  
-
-
   
